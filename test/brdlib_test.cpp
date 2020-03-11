@@ -64,9 +64,9 @@ int main(int argc, char *argv[]) {
       if (service.isAvailable()) {
         switch (service.getType()) {
           case ServiceType::Adc: {
-            auto &adcService = *service.getInterface<IAdcService>();
-            std::cout << "\tService name: " << adcService.getName() << '\n';
-            auto &adcInputSubsystem = adcService.getInputSubsystem();
+            auto adcService = service.getInterface<IAdcService>().get();
+            std::cout << "\tService name: " << adcService->getName() << '\n';
+            auto &adcInputSubsystem = adcService->getInputSubsystem();
             double gain{12.};
             adcInputSubsystem.setGain(gain);
             gain = adcInputSubsystem.getGain();
@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
             adcInputSubsystem.setGain(channel, gain);
             gain = adcInputSubsystem.getGain(channel);
             std::cout << "\tGain[" << channel << "]: " << gain << '\n';
-            auto &adcClockSubsystem = adcService.getClockSubsystem();
+            auto &adcClockSubsystem = adcService->getClockSubsystem();
             double clockRate{55.};
             adcClockSubsystem.setRate(clockRate);
             clockRate = adcClockSubsystem.getRate();
@@ -84,13 +84,13 @@ int main(int argc, char *argv[]) {
             break;
           }
           case ServiceType::Dac: {
-            auto &dacService = *service.getInterface<IDacService>();
-            std::cout << "\tService name: " << dacService.getName() << '\n';
+            auto dacService = service.getInterface<IDacService>().get();
+            std::cout << "\tService name: " << dacService->getName() << '\n';
             break;
           }
           case ServiceType::Ddc: {
-            auto &ddcService = *service.getInterface<IDdcService>();
-            std::cout << "\tService name: " << ddcService.getName() << '\n';
+            auto ddcService = service.getInterface<IDdcService>().get();
+            std::cout << "\tService name: " << ddcService->getName() << '\n';
             break;
           }
           default:
