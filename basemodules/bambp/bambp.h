@@ -18,19 +18,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#include <string>
+#pragma once
 
-#include "ambp.h"
-#include "services/stream_service.h"
+#include "modules/basemodule.h"
 
-using namespace InSys;
-using namespace std::string_literals;
+namespace InSys {
 
-CAmbp::CAmbp() {
-  getServicesList().remove(ServiceId::Stream2);
-  getServicesList().remove(ServiceId::Stream3);
-}
+struct IBambp {
+  using SharedPtr = std::shared_ptr<IBambp>;
+  virtual ~IBambp() noexcept = default;
+};
 
-void CAmbp::init() { CBaseModule::init(); }
+namespace Private {
 
-std::string CAmbp::getName() const noexcept { return "AMBP"s; }
+struct CBambpData final {};
+
+}  // namespace Private
+
+class CBambp final : public IBambp, public CBaseModule {
+  std::shared_ptr<Private::CBambpData> d_ptr{
+      std::make_shared<Private::CBambpData>()};
+
+ public:
+  CBambp();
+
+ private:
+  void init() final;
+  std::string getName() const noexcept final;
+};
+
+}  // namespace InSys

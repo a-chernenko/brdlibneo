@@ -14,14 +14,14 @@ export USE_SUFFIX64
 
 all::
 	$(MAKE) -f $(MAKEROOT)/make/engine.mk --no-print-directory -C brdlib
-	$(MAKE) -f $(MAKEROOT)/make/engine.mk --no-print-directory -C basemodules/ambpex
-	$(MAKE) -f $(MAKEROOT)/make/engine.mk --no-print-directory -C basemodules/ambp
-	$(MAKE) -f $(MAKEROOT)/make/engine.mk --no-print-directory -C sidedrivers/fm9009
+	$(MAKE) -f $(MAKEROOT)/make/engine.mk --no-print-directory -C basemodules/bambpex
+	$(MAKE) -f $(MAKEROOT)/make/engine.mk --no-print-directory -C basemodules/bambp
+	$(MAKE) -f $(MAKEROOT)/make/engine.mk --no-print-directory -C sidedrivers/mfm9009
 	$(MAKE) -f $(MAKEROOT)/make/engine.mk --no-print-directory -C test
 
 clean::
 	$(MAKE) -f $(MAKEROOT)/make/engine.mk clean -C brdlib
-	$(MAKE) -f $(MAKEROOT)/make/engine.mk clean -C basemodules/ambpex
-	$(MAKE) -f $(MAKEROOT)/make/engine.mk clean -C basemodules/ambp
-	$(MAKE) -f $(MAKEROOT)/make/engine.mk clean -C sidedrivers/fm9009
+	$(MAKE) -f $(MAKEROOT)/make/engine.mk clean -C basemodules/bambpex
+	$(MAKE) -f $(MAKEROOT)/make/engine.mk clean -C basemodules/bambp
+	$(MAKE) -f $(MAKEROOT)/make/engine.mk clean -C sidedrivers/mfm9009
 	$(MAKE) -f $(MAKEROOT)/make/engine.mk clean -C test

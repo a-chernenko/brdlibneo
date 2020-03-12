@@ -24,23 +24,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace InSys {
 
-struct IAmbp {
-  using SharedPtr = std::shared_ptr<IAmbp>;
-  virtual ~IAmbp() noexcept = default;
+struct IBambpex {
+  using SharedPtr = std::shared_ptr<IBambpex>;
+  virtual ~IBambpex() noexcept = default;
 };
 
 namespace Private {
 
-struct CAmbpData final {};
+struct CBambpexData final {};
 
 }  // namespace Private
 
-class CAmbp final : public IAmbp, public CBaseModule {
-  std::shared_ptr<Private::CAmbpData> d_ptr{
-      std::make_shared<Private::CAmbpData>()};
+class CBambpex final : public IBambpex, public CBaseModule {
+  std::shared_ptr<Private::CBambpexData> d_ptr{
+      std::make_shared<Private::CBambpexData>()};
 
  public:
-  CAmbp();
+  CBambpex();
 
  private:
   void init() final;

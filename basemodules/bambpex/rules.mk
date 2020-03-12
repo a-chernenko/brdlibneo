@@ -5,5 +5,5 @@ MODULE_FLAGS := -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function
 
 MODULE_LIBS := brdlib
 
-SRCS := ambp
+SRCS := bambpex
 MODULE_SRCS := $(addprefix ,$(addsuffix .cpp,$(SRCS)))

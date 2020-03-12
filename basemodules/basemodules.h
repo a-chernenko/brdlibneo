@@ -18,5 +18,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#include "ambpex/ambpex.h"
-#include "ambp/ambp.h"
+#include "bambpex/bambpex.h"
+#include "bambp/bambp.h"

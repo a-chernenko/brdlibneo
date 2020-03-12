@@ -18,33 +18,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#pragma once
+#include <string>
 
-#include "modules/basemodule.h"
+#include "bambpex.h"
+#include "services/stream_service.h"
 
-namespace InSys {
+using namespace InSys;
+using namespace std::string_literals;
 
-struct IAmbpex {
-  using SharedPtr = std::shared_ptr<IAmbpex>;
-  virtual ~IAmbpex() noexcept = default;
-};
+CBambpex::CBambpex() {
+  getServicesList().remove(ServiceId::Stream2);
+  getServicesList().remove(ServiceId::Stream3);
+}
 
-namespace Private {
+void CBambpex::init() { CBaseModule::init(); }
 
-struct CAmbpexData final {};
-
-}  // namespace Private
-
-class CAmbpex final : public IAmbpex, public CBaseModule {
-  std::shared_ptr<Private::CAmbpexData> d_ptr{
-      std::make_shared<Private::CAmbpexData>()};
-
- public:
-  CAmbpex();
-
- private:
-  void init() final;
-  std::string getName() const noexcept final;
-};
-
-}  // namespace InSys
+std::string CBambpex::getName() const noexcept { return "AMBPEX"s; }

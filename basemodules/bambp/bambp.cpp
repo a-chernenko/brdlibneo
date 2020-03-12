@@ -20,17 +20,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <string>
 
-#include "ambpex.h"
+#include "bambp.h"
 #include "services/stream_service.h"
 
 using namespace InSys;
 using namespace std::string_literals;
 
-CAmbpex::CAmbpex() {
+CBambp::CBambp() {
   getServicesList().remove(ServiceId::Stream2);
   getServicesList().remove(ServiceId::Stream3);
 }
 
-void CAmbpex::init() { CBaseModule::init(); }
+void CBambp::init() { CBaseModule::init(); }
 
-std::string CAmbpex::getName() const noexcept { return "AMBPEX"s; }
+std::string CBambp::getName() const noexcept { return "AMBP"s; }

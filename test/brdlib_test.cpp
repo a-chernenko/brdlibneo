@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using namespace InSys;
 
 int main(int argc, char *argv[]) {
-  auto basedriver = MakeBaseModule<CAmbpex>();
+  auto basedriver = MakeBaseModule<CBambpex>();
   if (basedriver == nullptr) {
     std::cerr << "Can't make basedriver!" << std::endl;
   }
