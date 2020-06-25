@@ -30,8 +30,8 @@ struct ISubModule : IModule {
 };
 
 template <typename DerrivedInterface>
-auto SubModuleDownCast(const ISubModule::SharedPtr& base) {
-  return ModuleDownCast<DerrivedInterface, const ISubModule::SharedPtr>(base);
+auto SubModuleCast(const ISubModule::SharedPtr& base) {
+  return ModuleCast<DerrivedInterface, const ISubModule::SharedPtr>(base);
 }
 
 template <typename SubModule, typename... Args>

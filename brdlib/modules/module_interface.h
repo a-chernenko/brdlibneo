@@ -52,7 +52,7 @@ struct IModule : Private::IModulePrivate {
 };
 
 template <typename DerrivedInterface, typename BaseInterface>
-auto ModuleDownCast(const BaseInterface &base) {
+auto ModuleCast(const BaseInterface &base) {
   auto derrived{std::dynamic_pointer_cast<DerrivedInterface>(base)};
   if (derrived == nullptr) {
     throw std::bad_cast();

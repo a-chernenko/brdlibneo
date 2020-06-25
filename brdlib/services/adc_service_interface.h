@@ -46,8 +46,8 @@ struct IAdcService : IService {
 };
 
 template <typename DerrivedInterface>
-auto AdcServiceDownCast(const IAdcService::SharedPtr &base) {
-  return ServiceDownCast<DerrivedInterface, const IAdcService::SharedPtr>(base);
+auto AdcServiceCast(const IAdcService::SharedPtr &base) {
+  return ServiceCast<DerrivedInterface, const IAdcService::SharedPtr>(base);
 }
 
 template <typename AdcService, typename ...Args>

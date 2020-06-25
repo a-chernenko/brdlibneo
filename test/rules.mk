@@ -1,5 +1,5 @@
 MODULE_TYPE := app
-MODULE_HEADER_DIRS := ../brdlib ../basemodules ../sidedrivers
+MODULE_HEADER_DIRS := ../brdlib ../basemodules ../sidedrivers ../sidedrivers/mfm9009
 
 MODULE_FLAGS := -Wno-unused-parameter -Wno-unused-variable -Wno-writable-strings
 

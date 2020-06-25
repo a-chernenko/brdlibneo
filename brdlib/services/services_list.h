@@ -46,13 +46,13 @@ class CServicesListElem final {
   bool isAvailable() const noexcept { return m_Value.second.has_value(); }
   template <typename ServiceInterface>
   auto getInterface() const {
-    return ServiceDownCast<ServiceInterface>(
+    return ServiceCast<ServiceInterface>(
         std::any_cast<IService::SharedPtr>(m_Value.second));
   }
   template <typename ServiceInterface>
   bool getInterface(ServiceInterface &service) const {
     try {
-      service = ServiceDownCast<ServiceInterface>(
+      service = ServiceCast<ServiceInterface>(
           std::any_cast<IService::SharedPtr>(m_Value.second));
     } catch (const std::bad_any_cast &) {
       return false;
