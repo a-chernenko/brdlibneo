@@ -24,6 +24,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "brdlibneo.h"
 #include "sidedrivers.h"
 
+#include "fm9009_adc_service.h"
+#include "fm9009_dac_service.h"
+#include "fm9009_ddc_service.h"
+
 using namespace InSys;
 
 int main(int argc, char *argv[]) {
@@ -64,7 +68,7 @@ int main(int argc, char *argv[]) {
       if (service.isAvailable()) {
         switch (service.getType()) {
           case ServiceType::Adc: {
-            auto adcService = service.getInterface<IAdcService>().get();
+            auto adcService = service.getInterface<IAdcService>();
             std::cout << "\tService name: " << adcService->getName() << '\n';
             auto &adcInputSubsystem = adcService->getInputSubsystem();
             double gain{12.};
@@ -81,16 +85,34 @@ int main(int argc, char *argv[]) {
             adcClockSubsystem.setRate(clockRate);
             clockRate = adcClockSubsystem.getRate();
             std::cout << "\tClock Rate: " << clockRate << '\n';
+            try {
+              auto adcServiceFm9009 =
+                  AdcServiceCast<IFm9009_AdcService>(adcService);
+            } catch (const std::bad_cast &e) {
+              std::cerr << e.what() << '\n';
+            }
             break;
           }
           case ServiceType::Dac: {
-            auto dacService = service.getInterface<IDacService>().get();
+            auto dacService = service.getInterface<IDacService>();
             std::cout << "\tService name: " << dacService->getName() << '\n';
+            try {
+              auto dacServiceFm9009 =
+                  DacServiceCast<IFm9009_DacService>(dacService);
+            } catch (const std::bad_cast &e) {
+              std::cerr << e.what() << '\n';
+            }
             break;
           }
           case ServiceType::Ddc: {
-            auto ddcService = service.getInterface<IDdcService>().get();
+            auto ddcService = service.getInterface<IDdcService>();
             std::cout << "\tService name: " << ddcService->getName() << '\n';
+             try {
+              auto ddcServiceFm9009 =
+                  DdcServiceCast<IFm9009_DdcService>(ddcService);
+            } catch (const std::bad_cast &e) {
+              std::cerr << e.what() << '\n';
+            }
             break;
           }
           default:
