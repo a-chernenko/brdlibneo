@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
             std::cout << "\tClock Rate: " << clockRate << '\n';
             try {
               auto adcServiceFm9009 =
-                  AdcServiceCast<IFm9009_AdcService>(adcService);
+                  ServiceCast<IFm9009_AdcService>(adcService);
             } catch (const std::bad_cast &e) {
               std::cerr << e.what() << '\n';
             }
@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
             std::cout << "\tService name: " << dacService->getName() << '\n';
             try {
               auto dacServiceFm9009 =
-                  DacServiceCast<IFm9009_DacService>(dacService);
+                  ServiceCast<IFm9009_DacService>(dacService);
             } catch (const std::bad_cast &e) {
               std::cerr << e.what() << '\n';
             }
@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
             std::cout << "\tService name: " << ddcService->getName() << '\n';
              try {
               auto ddcServiceFm9009 =
-                  DdcServiceCast<IFm9009_DdcService>(ddcService);
+                  ServiceCast<IFm9009_DdcService>(ddcService);
             } catch (const std::bad_cast &e) {
               std::cerr << e.what() << '\n';
             }
